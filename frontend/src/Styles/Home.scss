@@ -1,0 +1,51 @@
+// Styling for the container
+.home-container {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Table styling
+  .table {
+    border: 1px solid #dee2e6;
+    th {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+    }
+  
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+  
+  // Button styling
+  .action-buttons {
+    button {
+      margin-right: 0.5rem;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  
+    .btn-warning {
+      background-color: #ffc107;
+      border-color: #ffc107;
+      &:hover {
+        background-color: #e0a800;
+        border-color: #d39e00;
+      }
+    }
+  
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+      &:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+      }
+    }
+  }
+  
