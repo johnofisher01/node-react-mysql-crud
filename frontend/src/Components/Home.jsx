@@ -1,10 +1,16 @@
 import React from 'react'
+import axios from 'axios'
+import { useEffect} from react
 
 const Home = () => {
-  return (
-    <div>
-      Home
-    </div>
+
+  useEffect(() => {
+    axios.get('http://localhost:8081/')
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }, [])
+  return ( 
+    <></>
   )
 }
 
