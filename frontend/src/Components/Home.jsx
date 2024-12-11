@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Table, Button, Container } from "react-bootstrap";
+import  {Link } from 'react-router-dom'
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -16,6 +17,7 @@ const Home = () => {
   return (
     <Container className="mt-4">
       <h1 className="mb-4">Student Records</h1>
+      <Link to='/create' className='btn btn-success'>Create +</Link>
       <Table striped bordered hover responsive>
         <thead className="thead-dark">
           <tr>
@@ -32,6 +34,13 @@ const Home = () => {
               <td>{student.name}</td>
               <td>{student.email}</td>
               <td>
+              <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => console.log("Read", student.id)}
+                >
+                  Read
+                </Button>
                 <Button
                   variant="warning"
                   size="sm"
@@ -43,9 +52,9 @@ const Home = () => {
                 <Button
                   variant="danger"
                   size="sm"
-                  onClick={() => console.log("Replace", student.id)}
+                  onClick={() => console.log("Delete", student.id)}
                 >
-                  Replace
+                  Delete
                 </Button>
               </td>
             </tr>
