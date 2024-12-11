@@ -9,10 +9,15 @@ const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password:"",
-    database:"crud"
+    database:"my_STEM"
+})
 
-
-
+app.get('/', (req, res) => {
+    const sql = "SELECT * FROM student";
+    db.query(sql, (err, result) => {
+        if(err) return res.json({Message: "Error inside server"})
+        return res.json(result);
+    })
 })
 
 app.listen (8081, ()=> {
