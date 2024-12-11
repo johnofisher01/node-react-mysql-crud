@@ -23,11 +23,16 @@ const Home = () => {
         </thead>
         <tbody>
           {data.map((student, index) => {
+            console.log(student)
             return (
               <tr key={index}>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{student.id}</td>
+                <td>{student.name}</td>
+                <td>{student.email}</td>
+                <td>
+                  <button>Edit</button>
+                  <button>Replace</button>
+                </td>
               </tr>
             );
           })}
