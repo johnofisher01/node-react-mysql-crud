@@ -41,29 +41,29 @@ const Home = () => {
               <td>{student.name}</td>
               <td>{student.email}</td>
               <td className="action-buttons">
-                <Button
+                <Link to={`/read/${student.id}`}
                   variant="info"
                   size="sm"
                   className="me-2"
                   onClick={() => console.log("Read", student.id)}
                 >
                   Read
-                </Button>
-                <Button
+                </Link>
+                <Link
                   variant="warning"
                   size="sm"
                   className="me-2"
                   onClick={() => console.log("Edit", student.id)}
                 >
                   Edit
-                </Button>
-                <Button
+                </Link>
+                <Link
                   variant="danger"
                   size="sm"
                   onClick={() => console.log("Delete", student.id)}
                 >
                   Delete
-                </Button>
+                </Link>
               </td>
             </tr>
           ))}

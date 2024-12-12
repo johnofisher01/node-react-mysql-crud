@@ -6,8 +6,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
-
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -61,6 +59,32 @@ app.post('/students', (req, res) => {
         }
         res.status(201).json({ Message: "Student added successfully", StudentID: result.insertId });
     });
+});
+
+app.get('/read/:id', async (req, res) => {
+    try {
+        const sql = "SELECT * FROM students WHERE ID = ?";
+        const id = req.params.id;
+
+        const queryPromise = new Promise((resolve, reject) => {
+            db.query(sql, [id], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+
+        const result = await queryPromise;
+        if (result.length === 0) {
+            return res.status(404).json({ Message: "Student not found" });
+        }
+        res.json(result);
+    } catch (error) {
+        console.error('Error retrieving student:', error);
+        res.status(500).json({ Message: "Error inside server", Error: error.message });
+    }
 });
 
 app.listen(8081, () => {
