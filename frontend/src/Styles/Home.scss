@@ -1,32 +1,66 @@
-// Styling for the container
 .home-container {
     padding: 2rem;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .create-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #28a745;
+    border-color: #28a745;
+    &:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+  }
+  
   // Table styling
-  .table {
+  .styled-table {
     border: 1px solid #dee2e6;
+  
     th {
       background-color: #007bff;
       color: #fff;
       text-align: center;
+      font-size: 1.1rem;
+      font-weight: bold;
     }
   
     td {
       text-align: center;
       vertical-align: middle;
+      font-size: 0.95rem;
+    }
+  
+    tr:hover {
+      background-color: #f1f1f1;
     }
   }
   
-  // Button styling
+  // Action buttons styling
   .action-buttons {
     button {
       margin-right: 0.5rem;
       &:last-child {
         margin-right: 0;
+      }
+    }
+  
+    .btn-info {
+      background-color: #17a2b8;
+      border-color: #17a2b8;
+      &:hover {
+        background-color: #138496;
+        border-color: #117a8b;
       }
     }
   

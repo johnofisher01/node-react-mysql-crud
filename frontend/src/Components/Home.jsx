@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Table, Button, Container } from "react-bootstrap";
-import  {Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import "../Styles/Home.scss";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -15,16 +16,22 @@ const Home = () => {
   }, []);
 
   return (
-    <Container className="mt-4">
-      <h1 className="mb-4">Student Records</h1>
-      <Link to='/create' className='btn btn-success'>Create +</Link>
-      <Table striped bordered hover responsive>
-        <thead className="thead-dark">
+    <Container className="home-container mt-4">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h1 className="title">Student Records</h1>
+        <Button variant="success" className="create-btn">
+          <Link to="/create" className="text-white text-decoration-none">
+            Create +
+          </Link>
+        </Button>
+      </div>
+      <Table className="styled-table" striped bordered hover responsive>
+        <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Action</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -33,10 +40,11 @@ const Home = () => {
               <td>{student.id}</td>
               <td>{student.name}</td>
               <td>{student.email}</td>
-              <td>
-              <Button
-                  variant="danger"
+              <td className="action-buttons">
+                <Button
+                  variant="info"
                   size="sm"
+                  className="me-2"
                   onClick={() => console.log("Read", student.id)}
                 >
                   Read
