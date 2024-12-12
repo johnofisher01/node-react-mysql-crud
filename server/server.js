@@ -44,6 +44,23 @@ app.get('/', async (req, res) => {
     }
 });
 
+app.post('/students', (req, res) => {
+    const { name, email } = req.body;
+
+    if (!name || !email) {
+        return res.status(400).json({ Message: "Name and Email are required" });
+    }
+
+    const sql = "INSERT INTO students (name, email) VALUES (?, ?)";
+    db.query(sql, [name, email], (err, result) => {
+        if (err) {
+            console.error('Error inserting student:', err);
+            return res.status(500).json({ Message: "Error inside server", Error: err.message });
+        }
+        res.status(201).json({ Message: "Student added successfully", StudentID: result.insertId });
+    });
+});
+
 app.listen(8081, () => {
     console.log("Server is running on http://localhost:8081");
 });

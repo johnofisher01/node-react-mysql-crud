@@ -7,7 +7,9 @@ const Create = () => {
 
     const handleSubmit = (e)=> {
         e.preventDefault();
-        axios.post('http://localhost:8081/students')
+        axios.post('http://localhost:8081/students',values)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
 const [values, setValues] = useState({
     name:'',
