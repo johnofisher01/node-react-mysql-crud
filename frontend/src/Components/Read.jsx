@@ -20,6 +20,9 @@ const Read = () => {
         <Link to="/" className="btn-primary">
           Back
         </Link>
+        <Link to={`/edit/${student.id}`} className="btn-primary">
+        Edit
+        </Link>
       </div>
     </div>
   );
