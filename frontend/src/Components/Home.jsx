@@ -37,21 +37,9 @@ const Home = () => {
               <td>{student.name}</td>
               <td>{student.email}</td>
               <td className="action-buttons">
-                <Link to={`/read/${student.id}`} className="btn-primary read-btn">
-                  Read
-                </Link>
-                <button
-                  className="btn-secondary edit-btn"
-                  onClick={() => console.log("Edit", student.id)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn-danger delete-btn"
-                  onClick={() => console.log("Delete", student.id)}
-                >
-                  Delete
-                </button>
+                <Link to={`/read/${student.id}`} className="btn-primary">Read</Link>
+                <button className="btn-secondary">Edit</button>
+                <button className="btn-danger">Delete</button>
               </td>
             </tr>
           ))}

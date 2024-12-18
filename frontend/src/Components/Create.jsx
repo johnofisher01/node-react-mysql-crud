@@ -4,10 +4,13 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const Create = () => {
-
   const navigate = useNavigate();
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -18,10 +21,7 @@ const Create = () => {
       })
       .catch((err) => console.log(err));
   };
-  const [values, setValues] = useState({
-    name: "",
-    email: "",
-  });
+
   return (
     <div className="create-container">
       <form onSubmit={handleSubmit}>
