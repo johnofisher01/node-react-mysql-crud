@@ -13,6 +13,15 @@ const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:8081/delete/${id}`)
+      .then(() => {
+        setData(data.filter((student) => student.id !== id));
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="home-container">
       <div className="header">
@@ -37,9 +46,26 @@ const Home = () => {
               <td>{student.name}</td>
               <td>{student.email}</td>
               <td className="action-buttons">
-                <Link to={`/read/${student.id}`} className="btn-primary">Read</Link>
-                <button className="btn-secondary">Edit</button>
-                <button className="btn-danger">Delete</button>
+                <Link
+                  to={`/read/${student.id}`}
+                  state={{ student }}
+                  className="btn-primary"
+                >
+                  Read
+                </Link>
+                <Link
+                  to={`/edit/${student.id}`}
+                  state={{ student }}
+                  className="btn-secondary"
+                >
+                  Edit
+                </Link>
+                <button
+                  className="btn-danger"
+                  onClick={() => handleDelete(student.id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
