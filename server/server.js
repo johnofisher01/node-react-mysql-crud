@@ -78,7 +78,7 @@ app.get('/read/:id', async (req, res) => {
 
         const result = await queryPromise;
         if (result.length === 0) {
-            return res.status(404).json({ Message: "Student not found" });
+            return res.status(404).json({ Message: "Error inside server" });
         }
         res.json(result);
     } catch (error) {
