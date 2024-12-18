@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import "../Styles/Read.scss";
 
 const Read = () => {
   const { id } = useParams();
@@ -23,18 +24,19 @@ const Read = () => {
     fetchStudent();
   }, [id]);
 
-  if (loading) return <h2>Loading...</h2>;
-  if (error) return <h2>{error}</h2>;
+  if (loading) return <h2 className="loading">Loading...</h2>;
+  if (error) return <h2 className="error">{error}</h2>;
 
   return (
-    <div>
+    <div className="read-container">
       <h2>Student Details</h2>
       {student ? (
-        <>
-          <h2>ID: {student.ID}</h2>
-          <h2>Name: {student.Name}</h2>
-          <h2>Email: {student.Email}</h2>
-        </>
+        <div className="student-details">
+          <h3>ID: {student.ID}</h3>
+          <h3>Name: {student.Name}</h3>
+          <h3>Email: {student.Email}</h3>
+          <Link to="/" className="btn-primary">Back</Link>
+        </div>
       ) : (
         <h2>No student found</h2>
       )}

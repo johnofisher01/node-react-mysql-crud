@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Table, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../Styles/Home.scss";
 
@@ -16,16 +14,14 @@ const Home = () => {
   }, []);
 
   return (
-    <Container className="home-container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h1 className="title">Student Records</h1>
-        <Button variant="success" className="create-btn">
-          <Link to="/create" className="text-white text-decoration-none">
-            Create +
-          </Link>
-        </Button>
+    <div className="home-container">
+      <div className="header">
+        <h2 className="title">Student Records</h2>
+        <Link to="/create" className="btn-primary create-btn">
+          Create +
+        </Link>
       </div>
-      <Table className="styled-table" striped bordered hover responsive>
+      <table className="styled-table">
         <thead>
           <tr>
             <th>ID</th>
@@ -41,35 +37,27 @@ const Home = () => {
               <td>{student.name}</td>
               <td>{student.email}</td>
               <td className="action-buttons">
-                <Link to={`/read/${student.id}`}
-                  variant="info"
-                  size="sm"
-                  className="me-2"
-                  onClick={() => console.log("Read", student.id)}
-                >
+                <Link to={`/read/${student.id}`} className="btn-primary read-btn">
                   Read
                 </Link>
-                <Link
-                  variant="warning"
-                  size="sm"
-                  className="me-2"
+                <button
+                  className="btn-secondary edit-btn"
                   onClick={() => console.log("Edit", student.id)}
                 >
                   Edit
-                </Link>
-                <Link
-                  variant="danger"
-                  size="sm"
+                </button>
+                <button
+                  className="btn-danger delete-btn"
                   onClick={() => console.log("Delete", student.id)}
                 >
                   Delete
-                </Link>
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
-      </Table>
-    </Container>
+      </table>
+    </div>
   );
 };
 
